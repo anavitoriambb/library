@@ -1,9 +1,9 @@
 <?php
 
     // Declarar as variáveis necessárias para gerar a minha conexão com o banco de dados
-    $hostname = "fdb30.awardspace.net";
-    $dbname = "3762240_library";
-    $username = "3762240_library";
+    $hostname = "fdb18.awardspace.net";
+    $dbname = "3838903_library";
+    $username = "3838903_library";
     $password = "Et3cL1br@ry";
 
     try {
