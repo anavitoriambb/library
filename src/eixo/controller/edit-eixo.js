@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $('#table-tipo').on('click', 'button.btn-edit', function(e) {
+    $('#table-eixo').on('click', 'button.btn-edit', function(e) {
 
         e.preventDefault()
 
@@ -9,25 +9,25 @@ $(document).ready(function() {
         $('.modal-body').empty()
 
         // Criar um novo título para nossa janela modals
-        $('.modal-title').append('Edição do tipo de usuário')
+        $('.modal-title').append('Edição do eixo tecnológico')
 
-        let IDTIPO_USUARIO = `IDTIPO_USUARIO=${$(this).attr('id')}`
+        let IDEIXO = `IDEIXO=${$(this).attr('id')}`
 
         $.ajax({
             type: 'POST',
             dataType: 'json',
             assync: true,
-            data: IDTIPO_USUARIO,
-            url: "src/tipo-usuario/model/view-tipo.php",
+            data: IDEIXO,
+            url: "src/eixo/model/view-eixo.php",
             success: function(dado) {
                 if (dado.tipo == "success") {
-                    $('.modal-body').load('src/tipo-usuario/view/form-tipo.html', function() {
-                        $('#DESCRICAO').val(dado.dados.DESCRICAO)
-                        $('#IDTIPO_USUARIO').val(dado.dados.IDTIPO_USUARIO)
+                    $('.modal-body').load('src/eixo/view/form-eixo.html', function() {
+                        $('#NOME').val(dado.dados.NOME)
+                        $('#IDEIXO').val(dado.dados.IDEIXO)
                     })
                     $('.btn-save').show()
                     $('.btn-save').removeAttr('data-operation')
-                    $('#modal-tipo').modal('show')
+                    $('#modal-eixo').modal('show')
                 } else {
                     Swal.fire({ //Inicialização do SweetAlert
                         title: 'Library', // Título dda janela SweetAlert
