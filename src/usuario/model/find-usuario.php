@@ -9,7 +9,7 @@
     $dados = array();
 
     // Criar uma querie de consulta ao banco de dados
-    $sql = "SELECT * FROM USUARIO WHERE NOME LIKE %$nome% ORDER BY NOME DESC";
+    $sql = "SELECT * FROM USUARIO WHERE NOME LIKE '%$nome%' ORDER BY NOME ASC";
 
     // Executar a querie
     $resultado = $pdo->query($sql);
