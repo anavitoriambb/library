@@ -13,7 +13,7 @@ $(document).ready(function() {
                 assync: true,
                 data: NOME,
                 url: 'src/usuario/model/find-usuario.php',
-                succes: function(dado) {
+                succes: function(dado) { //
                     for (const dado of dados) {
                         $('#autores').append(`<input type="text" name="" id="" class="form-control" value="${dado.NOME}" disabled>`)
                     }
