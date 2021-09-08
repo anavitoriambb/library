@@ -3,9 +3,11 @@ $(document).ready(function() {
         e.preventDefault()
 
         let NOME = `NOME= ${$(this).val()}`
-        $('#autores').empty()
+
 
         if ($(this).val().length >= 3) {
+
+            $('#autores').empty()
 
             $.ajax({
                 dataType: 'json',
@@ -13,12 +15,14 @@ $(document).ready(function() {
                 assync: true,
                 data: NOME,
                 url: 'src/usuario/model/find-usuario.php',
-                succes: function(dado) { //
+                succes: function(dado) {
                     for (const dado of dados) {
-                        $('#autores').append(`<input type="text" name="" id="" class="form-control" value="${dado.NOME}" disabled>`)
+                        $('#autores').append(`<input type="text" name="" id=""${dado.IDUSUARIO}"" class="form-control" value="${dado.NOME}" disabled>`)
                     }
                 }
             })
+        } else {
+            $('#autores').empty();
         }
     })
 })
