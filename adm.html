@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="libs/fontAwesome/css/all.css">
     <link rel="stylesheet" href="libs/sweetAlert/dist/sweetalert2.css">
     <link rel="stylesheet" href="libs/dataTables/datatables.css">
+
 </head>
 
 <body>
@@ -48,6 +49,33 @@
         </div>
     </div>
 
+    <?php 
+    if(isset($_POST['enviar-formulario'])):
+        $formatosPermitidos = array("png", "jpeg", "jpg", "gif");
+        $extensao = pachinfo($_FILES['arquivo']['name'], PATHINFO_EXTENSION);
+        if(in_array($extensao, $formatosPermitidos)):
+            $pasta = "image/arquivos/";
+            $temporario = $_FILES['arquivos'][tmp_name];
+            $novoNome = uniqid().".$extensao";
+           
+           if(move_uploaded_file($temporario, $pasta.$novoNome))
+           $mensagem = "Upload feito com sucesso!";
+           else:
+           $mensagem = "Erro, não foi possível fazer o upload";
+           endif;
+           else:
+            $mensagem = "Formato inválido";
+        endif;
+    echo $mensagem
+        endif;
+    ?>
+
+
+    <br><br> <br><br>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+        <input type="file" name="arquivo"> <br><br>
+        <input type="submit" name="enviar-formulario">
+    </form>
 
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
